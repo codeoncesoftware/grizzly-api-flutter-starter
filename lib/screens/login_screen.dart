@@ -1,3 +1,4 @@
+import 'package:codeonce/screens/home_screen.dart';
 import 'package:codeonce/screens/register_screen.dart';
 import 'package:codeonce/services/auth_service.dart';
 import 'package:flutter/material.dart';
@@ -15,11 +16,32 @@ class _LoginScreenState extends State<LoginScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final email = TextEditingController();
   final password = TextEditingController();
+  _showSnackMessage(message) {
+    var snackBar = SnackBar(content: message);
+    _scaffoldKey.currentState?.showSnackBar(snackBar);
+  }
 
   _login(String username, String password) async {
+    SharedPreferences _prefs = await SharedPreferences.getInstance();
     var _userService = UserService();
     var registeredUser = await _userService.login(username, password);
     var result = json.decode(registeredUser.body);
+    if (result['message'] == "Wrong Credentials") {
+      _showSnackMessage(Text(
+        'Wrong Credentials',
+        style: TextStyle(color: Colors.red),
+      ));
+    } else if (result['message'] ==
+        "Your account will be activated soon by the admin") {
+      _showSnackMessage(Text(
+        'Your account will be activated soon by the admin',
+        style: TextStyle(color: Colors.red),
+      ));
+    } else {
+      _prefs.setString("token", result['token']);
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => HomeScreen()));
+    }
   }
 
   @override

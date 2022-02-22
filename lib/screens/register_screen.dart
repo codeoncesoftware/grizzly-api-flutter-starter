@@ -67,7 +67,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   style: TextStyle(color: Colors.lightBlue, fontSize: 20)),
             ),
             Container(
-              height: MediaQuery.of(context).size.height / 2,
+              height: MediaQuery.of(context).size.height / 1.7,
               width: MediaQuery.of(context).size.width,
               padding: EdgeInsets.only(top: 62),
               child: Column(
