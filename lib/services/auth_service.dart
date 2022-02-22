@@ -4,8 +4,7 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:logger/logger.dart';
 
-String _baseUrl =
-    'https://app.grizzly-api.com/runtime/620faa841da35156832fd69c/';
+String _baseUrl = 'https://app.grizzly-api.com/runtime/<your_version_id>/';
 
 class UserService {
   UserService() {}
@@ -50,14 +49,6 @@ class UserService {
     return await http.get('${_baseUrl}allusers',
         headers: {'Authorization': 'Bearer $token'});
   }
-
-  /* getConnectedUser() async {
-        return JSON.parse(localStorage.getItem('grizzly-user'));
-    }
-
-    setConnectedUser(user: User): void {
-        localStorage.setItem('grizzly-user', JSON.stringify(user));
-    }*/
 
   activateUser(String username) async {
     SharedPreferences _prefs = await SharedPreferences.getInstance();

@@ -1,6 +1,3 @@
-import 'package:codeonce/screens/add_product_screen.dart';
-import 'package:codeonce/screens/home_screen.dart';
-import 'package:codeonce/screens/product_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:codeonce/screens/login_screen.dart';
 

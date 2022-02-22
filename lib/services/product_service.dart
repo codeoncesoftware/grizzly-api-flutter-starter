@@ -4,8 +4,7 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:logger/logger.dart';
 
-String _baseUrl =
-    'https://app.grizzly-api.com/runtime/620faa841da35156832fd69c/';
+String _baseUrl = 'https://app.grizzly-api.com/runtime/<your_version_id>/';
 
 class ProductService {
   ProductService() {}
